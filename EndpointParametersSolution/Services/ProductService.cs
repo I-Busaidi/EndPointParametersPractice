@@ -18,7 +18,7 @@ namespace EndpointParametersSolution.Services
 
         public List<ProductOutputDTO> GetAllProducts()
         {
-            List<Product> products = _productRepository.GetAllProducts().ToList();
+            List<Product> products = _productRepository.GetAllProducts().OrderByDescending(p => p.dateAdded).ToList();
             List<ProductOutputDTO> productsDTO = _mapper.Map<List<ProductOutputDTO>>(products);
             if (productsDTO == null || productsDTO.Count == 0)
             {
