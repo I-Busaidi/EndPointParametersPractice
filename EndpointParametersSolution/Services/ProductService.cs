@@ -46,6 +46,12 @@ namespace EndpointParametersSolution.Services
                 throw new InvalidOperationException("Product information is empty.");
             }
 
+            var products = _productRepository.GetAllProducts();
+            if (products.Any(p => p.productName == productInputDTO.productName))
+            {
+                throw new InvalidOperationException("A product with this name already exists.");
+            }
+
             if (productInputDTO.productPrice <= 0)
             {
                 throw new ArgumentException("Price must be greater than 0");
@@ -91,6 +97,13 @@ namespace EndpointParametersSolution.Services
             if (product == null)
             {
                 throw new KeyNotFoundException("Could not find product.");
+            }
+
+            var productToCheck = _productRepository.GetAllProducts()
+                .FirstOrDefault(p => p.productName == productInputDTO.productName);
+            if (productToCheck != null && productToCheck.productId != product.productId)
+            {
+                throw new ArgumentException("A product with this name already exists.");
             }
 
             var productIn = _mapper.Map<Product>(productInputDTO);

@@ -1,5 +1,6 @@
 
 using EndpointParametersSolution.Repositories;
+using EndpointParametersSolution.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace EndpointParametersSolution
@@ -15,7 +16,7 @@ namespace EndpointParametersSolution
                     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
             builder.Services.AddScoped<IProductRepository, ProductRepository>();
-
+            builder.Services.AddScoped<IProductService, ProductService>();
 
             builder.Services.AddAutoMapper(typeof(Program));
 
