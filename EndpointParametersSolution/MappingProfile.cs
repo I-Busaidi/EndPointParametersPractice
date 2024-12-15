@@ -10,6 +10,9 @@ namespace EndpointParametersSolution
         {
             CreateMap<ProductInputDTO, Product>();
             CreateMap<Product, ProductOutputDTO>();
+
+            CreateMap<UserInputDTO, User>();
+            CreateMap<User, UserOutputDTO>();
         }
     }
 }
