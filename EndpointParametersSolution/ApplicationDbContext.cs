@@ -14,8 +14,13 @@ namespace EndpointParametersSolution
             modelBuilder.Entity<Product>()
                 .HasIndex(p => p.productName)
                 .IsUnique();
+
+            modelBuilder.Entity<User>()
+                .HasIndex(u => u.userName)
+                .IsUnique();
         }
 
         public DbSet<Product> Products { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }
