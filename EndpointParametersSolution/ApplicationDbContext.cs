@@ -16,7 +16,7 @@ namespace EndpointParametersSolution
                 .IsUnique();
 
             modelBuilder.Entity<User>()
-                .HasIndex(u => u.userName)
+                .HasIndex(u => u.userEmail)
                 .IsUnique();
         }
 
