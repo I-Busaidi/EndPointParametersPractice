@@ -8,7 +8,7 @@ namespace EndpointParametersSolution
     {
         public MappingProfile()
         {
-            CreateMap<Product, ProductInputDTO>();
+            CreateMap<ProductInputDTO, Product>();
             CreateMap<Product, ProductOutputDTO>();
         }
     }
