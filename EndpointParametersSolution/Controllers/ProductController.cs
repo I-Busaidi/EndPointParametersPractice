@@ -1,9 +1,11 @@
 ﻿using EndpointParametersSolution.DTOs;
 using EndpointParametersSolution.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EndpointParametersSolution.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/[Controller]")]
     public class ProductController : ControllerBase
@@ -13,7 +15,6 @@ namespace EndpointParametersSolution.Controllers
         {
             _productService = productService;
         }
-
         [HttpPost]
         public IActionResult AddProduct([FromBody] ProductInputDTO productInputDTO)
         {
@@ -28,6 +29,7 @@ namespace EndpointParametersSolution.Controllers
             }
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public IActionResult GetAllProducts(int pageNumber = 1, int pageSize = 1)
         {
